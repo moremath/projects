@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>小说系统主页</title>
+    <link rel="shortcut icon" href="../static/book.jpg">
+    <link rel="stylesheet" href="../static/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/main_index.css">
+{#    <link rel="stylesheet" href="../static/main_002.css">#}
+    <link rel="stylesheet" href="../static/search.css">
+    <link rel="stylesheet" href="../static/tags-color.css">
+    <link rel="stylesheet" href="../static/chosen.css">
+    <link rel="stylesheet" href="../static/helpBartool.css">
+
+
+<style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style>
+</head>
+<body class="index">
+
+<link rel="stylesheet" href="../static/_header.css">
+<div class="Header">
+<img class="logo" src="/static/book.jpg"></img>
+	<div class="cont_box">
+		您好，{{ username|default("") }}！
+        <dl class="nav">
+            <a href="/logout" > <em style="color: green">  注销登录</em></a>
+
+		<form class="so"  action="javascript:onSearch()">
+			<input type="hidden" name="c.st" value="0">
+			<input id="id-search-input" placeholder="输入书名搜索" class="q" type="text" >
+			<input class="m" type="submit" value="搜索">
+		</form>
+        </dl>
+	</div>
+</div>
+
+
+<link rel="stylesheet" href="../static/_nav.css">
+<div class="Nav">
+	<div class="cls-nav-row">
+        <a  href="#id-table-wrapper" ><span>男生</span></a>
+        <a  href="#id-table-wrapper"  ><span>玄幻奇幻</span></a>
+        <a  href="#id-table-wrapper"  ><span>仙侠武侠</span></a>
+        <a  href="#id-table-wrapper"  ><span>都市小说</span></a>
+        <a  href="#id-table-wrapper"  ><span>历史军事</span></a>
+        <a  href="#id-table-wrapper"  ><span>游戏竞技</span></a>
+        <a  href="#id-table-wrapper"  ><span>科幻末世</span></a>
+        <a  href="#id-table-wrapper"  ><span>悬疑小说</span></a>
+        <img src="../static/crown.gif" class="icon_crown">
+    </div>
+    <div class="cls-nav-row">
+        <a  href="#id-table-wrapper"  ><span>女生</span></a>
+        <!--
+        <a  href="#id-table-wrapper"  ><span>都市言情</span></a>
+        <a  href="#id-table-wrapper"  ><span>古装言情</span></a>
+        <a  href="#id-table-wrapper"  ><span>幻想言情</span></a>
+        -->
+        <a  href="#id-table-wrapper"  ><span>浪漫青春</span></a>
+        <a  href="#id-table-wrapper"  ><span>青春小说</span></a>
+        <a  href="#id-table-wrapper"  ><span>情感小说</span></a>
+        <a  href="#id-table-wrapper" ><span>个性化</span></a>
+        <a  href="#id-table-wrapper"  ><span>二次元</span></a>
+        <a  href="#id-table-wrapper" ><span>自述小说</span></a>
+        <a  href="#id-table-wrapper"  ><span>爆笑小说</span></a>
+    </div>
+
+</div>
+
+<div class="search-list" id="id-search" style="display: none">
+    <div class="alltable">
+        <table>
+            <thead>
+            <tr>
+                <td >序号</td>
+                <td >总类目</td>
+                <td >书名</td>
+                <td >字数</td>
+                <td >作者</td>
+                <td >状态</td>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- 开始  -->
+<div class="main searchjg">
+    <div class="allfl">
+       <span class="books" >检索到 <em id="id-result-num" style="color: red">0</em> 部符合条件的作品</span>
+        <span class="tr1121" >整个系统共有 <span style="color: red">88806</span> 部作品</span>
+    </div>
+
+
+<div class="search-list" id="id-table-wrapper" >
+        <div class="listtit">
+            <div class="titl">
+                <strong>每页最多显示 <I id="id-max-size-show">30</I> 部"<span id="id-result-type"></span>"类目的小说</strong>
+            </div>
+        </div>
+
+        <div  style="overflow: scroll;max-height: 500px;display: none" id="id-table-father">
+            <table class="text-center table table-hover  table-striped">
+                <thead>
+                <tr>
+                    <td >序号</td>
+                    <td >子类目</td>
+                    <td >书名</td>
+                    <td >字数</td>
+                    <td >作者</td>
+                    <td >状态</td>
+                </tr>
+                </thead>
+                <tbody id="id-tbody"></tbody>
+            </table>
+        </div>
+        <div class="page">
+            当前第 <span id="id-current-page" style="color:red;">0</span> 页<a href="javascript:onScroll(-1);">
+            <button class="btn btn-xs"><span>上一页</span></a></button>
+            <button class="btn btn-xs"><a href="javascript:onScroll(1)"><span>下一页</span></a></button>
+            共 <span id="id-result-pages" style="color:orange;">0</span> 页 <span>转到第
+            <input name="toPage" id="toPage" type="text"></span><span>页</span>
+            <button class="btn btn-xs"><a href="javascript:onScroll(0)"><span>跳转</span></a></button>
+        </div>
+
+    </div>
+</div>
+
+    <audio id="id-play">
+        <source src="../static/click.mp3">浏览器不支持mp3</source>
+    </audio>
+<script type="text/javascript" src="../static/main.js"></script>
+
+</body>
+</html>

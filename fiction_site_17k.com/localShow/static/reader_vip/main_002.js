@@ -1,0 +1,1 @@
+window.Book=k.book();
