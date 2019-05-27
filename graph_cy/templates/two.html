@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/loading.css" />
+    <link rel="stylesheet" type="text/css" href="../static/main.css" />
+    <script src="../static/jquery.min.js"></script>
+    <script src="../static/cytoscape.min.js"></script>
+    <meta charset="UTF-8">
+    <title>CDR关系分析原型系统及开发</title>
+</head>
+<body>
+{#    <h1>数据表格</h1>#}
+{#    <div id='id-logo' class='loader loader--glisteningWindow'></div>#}
+    <h3 style="color: blueviolet">默认文件call.xls</h3>
+    <h4 >兼容xlsx(可在项目根目录下重新选择其他新建的表格)</h4>
+
+    <input id='id-file' type="file" name="file"  class="btn-info btn-lg "
+    style="display: inline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <button id='id-btn-table' class="btn btn-primary btn-lg">预览表格</button>
+     <button id='id-btn-graph' class="btn btn-info btn-lg">可视化分析</button>
+
+     <a href="/one" target="_blank"><button class="btn  btn-lg">单独分析</button></a>
+
+     <a href="/two" target="_blank"><button class="btn  btn-lg">联合分析</button></a>
+
+    <div class='loader loader--audioWave' id='id-loading' style="display: none" ></div>
+
+    <table id='id-table' class="text-center table table-hover  table-striped">
+        <thead style="font-weight: bold;">
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <div id="id-graph">
+        <div id="cy"></div>
+    </div>
+
+
+    <audio id="id-play">
+        <source src="../static/click.mp3">浏览器不支持mp3</source>
+    </audio>
+
+
+<script  src="../static/cy.js"></script>
+<script  src="../static/main.js"></script>
+</body>
+</html>

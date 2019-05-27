@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/loading.css" />
+    <link rel="stylesheet" type="text/css" href="../static/main.css" />
+        <script src="../static/cytoscape.min.js"></script>
+
+    <meta charset="UTF-8">
+    <title>{{ user }}的CDR关系</title>
+    <script>
+        var cydata={{ cydata|safe }}
+    </script>
+</head>
+<body >
+
+{#<div >#}
+{#    <br><br>#}
+    <table class="text-center table   table-hover  table-striped" style="max-width: 40%;float: right">
+        <thead>
+            <td >属性</td><td>值</td>
+        </thead>
+        <tbody>
+        {% for foo in tbody %}
+        <tr>
+            {% for _foo in foo %}
+            <td>{{ _foo }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+{#        <tr><td></td><td></td></tr>#}
+        </tbody>
+    </table>
+{#</div>#}
+    <div id="id-graph" style="max-width: 60%;max-height: 700px">
+        <div id="cy"></div>
+    </div>
+
+
+<script  src="../static/cy.js"></script>
+    <script>
+        cy_draw(
+                cydata['id_list'],
+                cydata['link_list'],
+            )
+    </script>
+</body>
+</html>
